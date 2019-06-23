@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <form action="/players/search/{{id}}"class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar por Cedula" aria-label="Search" name=id>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+    </div>
+
+    {{#each player}}
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <table>
+            <td>
+              <th>Cedula</th>
+              <th>Nombre y Apellido</th>
+              <th>Equipo</th>
+              <th>Numero</th>
+              <th>Cambiar</th>
+
+            </td>
+            <td>
+              <tr>{{id}}</td>
+              <tr>{{name}} {{last_name}}</tr>
+              <tr>{{team}}</tr>
+              <tr>{{number_player}}</tr>
+              <tr><a href="/players/edit/{{id}}"></a></tr>
+
+            </td>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    {{/each}}
+
+  </div>
+
+</div>

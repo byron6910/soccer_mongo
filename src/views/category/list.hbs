@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <h1>Lista de Categorias 33</h1>
+    </div>
+</div>
+
+<br>
+
+  {{#each categories}}
+<div class="container">
+  <div class="row">
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>Nombre de Categoria</th>
+          <th>Genero</th>
+          <th>Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{name}}</td>
+          <td>{{gender}}</td>
+          <td> <a class="btn btn-danger" href="/categories/delete/{{_id}}">Eliminar</a>
+          <a class="btn btn-secondary" href="/categories/edit/{{_id}}">Editar</a> </td>
+        </tr>
+      </tbody>
+    </table>
+      {{/each}}
+  </div>
+</div>
+
+

@@ -1,0 +1,41 @@
+<div class="container text-center">
+  <h1>Lista de Equipos</h1>
+  <br>
+</div>
+
+  {{#each teams}}
+<div class="container">
+  
+  <div class="row">
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>Nombre de Equipo</th>
+          <th>Fecha de Fundacion</th>
+          <th>Categoria</th>
+          <th>Presidente</th>
+          <th>Correo Equipo</th>
+          <th>Telefono</th>
+          <th>Descripcion</th>          
+          <th>Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{name}}</td>
+          <td>{{date_f}}</td>
+          <td>{{category}}</td>
+          <td>{{president}}</td>
+          <td>{{email}}</td>
+          <td>{{phone}}</td>
+          <td>{{description}}</td>
+
+
+          <td> <a class="btn btn-danger" href="/teams/delete/{{_id}}">Eliminar</a>
+          <a class="btn btn-secondary" href="/teams/edit/{{_id}}">Editar</a> </td>
+        </tr>
+      </tbody>
+    </table>
+      {{/each}}
+  </div>
+</div>
