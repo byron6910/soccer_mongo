@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="/players/add" method="POST" >
+    <form action="/players/add" method="POST" enctype="multipart/form-data" >
       <div class="container-fluid form-row">
         <div class="form-group col-md-6 col-offset 1">
           <label for="ci"> Cedula</label>
@@ -14,6 +14,16 @@
         <div class="form-group col-md-6">
           <label for="last_name">Apellidos:</label>
           <input type="text" class="form-control" id="last_name" placeholder="Apellidos" name="last_name">
+        </div>
+
+         <div class="form-group col-md-6">
+          <div class="input-group">
+            <div class="custom-file">
+              <br>
+              <input type="file" name="photo" class="custom-file-input" id=inputGroupFile aria-describedby="inputGroupFileAddon" required/>
+              <label for="inputGroupFile" class="custom-file-label">Choose File</label>
+            </div>
+          </div>
         </div>
 
         <div class="form-group col-md-6">

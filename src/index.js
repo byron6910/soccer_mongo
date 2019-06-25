@@ -3,6 +3,8 @@ const path=require('path');
 const hbs=require('express-handlebars');
 const flash=require('connect-flash');
 const session=require('express-session');
+const multer = require('multer');
+const morgan = require('morgan');
 
 const routes=require('./routes/index');
 
@@ -28,7 +30,14 @@ app.engine('.hbs',hbs({
 
 app.set('view engine','.hbs');
 
+
+
 //middlewares
+app.use(morgan('dev'));
+app.use(multer({
+    dest:path.join(__dirname,'./public/players/photos')
+    }).single('photo'));
+
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.use(session({
@@ -40,6 +49,15 @@ app.use(session({
 app.use(flash());
 
 
+//variables globales
+app.use((req,res,next)=>{
+    res.locals.success=req.flash('success');
+    res.locals.error=req.flash('error');
+    res.locals.user=req.user||null;
+    next();
+});
+
+
 //routes
 
 app.use(routes);
@@ -48,17 +66,10 @@ app.use(require('./routes/teams'));
 app.use(require('./routes/categories'));
 
 
-//variables globales
-app.use((req,res,next)=>{
-    res.locals.sucess=req.flash('sucess');
-    res.locals.error=req.flash('error');
-    res.locals.user=req.user||null;
-    next();
-});
 
 //archivos estaticas
 
-app.use( express.static(path.join(__dirname,'public')));
+app.use('/public',express.static(path.join(__dirname,'public')));
 
 
 //servidor

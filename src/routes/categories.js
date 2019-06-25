@@ -16,12 +16,14 @@ router.post('/categories/add',async (req,res)=>{
     const {name,gender}=req.body;
     const newCategory=new Categories({name,gender});
     await newCategory.save();
+    req.flash('success','Categoria Ingresa Exitosamente '+name);
     res.redirect('/categories');
 });
 
 router.get('/categories/delete/:id',async (req,res)=>{
     
     await Categories.findByIdAndDelete(req.params.id);
+    req.flash('success','Eliminado Satisfactoriamente')   
     res.redirect('/categories');
 
 });
@@ -36,6 +38,8 @@ router.post('/categories/edit/:id',async (req,res)=>{
     console.log(req.body);
     const{name,gender}=req.body;
     const newCategory=await Categories.findByIdAndUpdate(req.params.id,{name,gender});
+    req.flash('success','Categoria Actualizada Satisfactoriamente')
+    
     res.redirect('/categories');
 });
 

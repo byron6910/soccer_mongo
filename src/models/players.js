@@ -10,7 +10,8 @@ const schemaPlayer=new Schema({
     birthday:{type:Date,require:true},
     team:{type:String,required:true},
     number_player:{type:Number,required:true},
-    address:{type:String,require:true}
+    address:{type:String,require:true},
+    photo:{type:String}
 
 
 });
